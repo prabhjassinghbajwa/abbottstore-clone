@@ -1,0 +1,33 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f8ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e6f3ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  
+  <!-- Product Bottle -->
+  <rect x="150" y="100" width="100" height="200" rx="20" fill="#ffffff" stroke="#0066cc" stroke-width="3"/>
+  <rect x="160" y="110" width="80" height="180" rx="15" fill="#f8f9fa"/>
+  
+  <!-- Ensure Logo -->
+  <text x="200" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0066cc">ENSURE</text>
+  <text x="200" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">MAX PROTEIN</text>
+  
+  <!-- Protein Info -->
+  <circle cx="200" cy="200" r="25" fill="#0066cc"/>
+  <text x="200" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">30g</text>
+  <text x="200" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">PROTEIN</text>
+  
+  <!-- Vanilla Label -->
+  <rect x="170" y="240" width="60" height="25" rx="12" fill="#ffd700"/>
+  <text x="200" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">VANILLA</text>
+  
+  <!-- Nutrition Info -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">150 Calories</text>
+  <text x="200" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">11 fl oz</text>
+  
+  <!-- Abbott Logo -->
+  <text x="200" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#999">ABBOTT</text>
+</svg>

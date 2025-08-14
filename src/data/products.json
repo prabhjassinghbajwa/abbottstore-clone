@@ -1,0 +1,253 @@
+[
+  {
+    "sku": "67165",
+    "name": "Ensure Max Protein",
+    "slug": "ensure-max-protein-shake-french-vanilla-11-fl-oz-tetra-case-of-12-67165",
+    "price": 45.99,
+    "originalPrice": 52.99,
+    "currency": "USD",
+    "category": "adult-nutrition",
+    "subcategory": "Protein Shakes",
+    "brand": "Ensure",
+    "description": "Ensure Max Protein French Vanilla provides 30g of protein and 150 calories per serving. Perfect for active adults who need extra protein to support muscle health and recovery.",
+    "shortDescription": "30g protein, 150 calories per serving",
+    "images": [
+      "/images/real/ensure-max-protein-french-vanilla-67165-front.jpg",
+      "/images/real/ensure-max-protein-french-vanilla-67165-front.jpg",
+      "/images/real/ensure-max-protein-french-vanilla-67165-front.jpg"
+    ],
+    "variants": [
+      {
+        "id": "1-1",
+        "label": "French Vanilla",
+        "sku": "67165",
+        "price": 45.99,
+        "originalPrice": 52.99,
+        "size": "Case of 12",
+        "flavor": "French Vanilla",
+        "images": [
+          "/images/real/ensure-max-protein-french-vanilla-67165-front.jpg"
+        ],
+        "inStock": true,
+        "stockQuantity": 45
+      }
+    ],
+    "features": [
+      "30g of protein per serving",
+      "150 calories",
+      "24 vitamins and minerals",
+      "Lactose-free",
+      "Gluten-free"
+    ],
+    "specifications": {
+      "Protein": "30g",
+      "Calories": "150",
+      "Serving Size": "11 fl oz",
+      "Servings Per Case": "12",
+      "Storage": "Store in a cool, dry place"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviewCount": 128,
+    "tags": ["protein", "vanilla", "adult nutrition", "muscle health"],
+    "isNew": false,
+    "isFeatured": true,
+    "caseSize": "Case of 12",
+    "flavor": "French Vanilla",
+    "nutritionalInfo": {
+      "Protein": "30g",
+      "Calories": "150",
+      "Fat": "3g",
+      "Carbohydrates": "8g",
+      "Sugar": "1g"
+    }
+  },
+  {
+    "sku": "55251",
+    "name": "EleCare Powder",
+    "slug": "elecare-powder-14-1oz-can-case-of-6-55251",
+    "price": 89.99,
+    "originalPrice": 99.99,
+    "currency": "USD",
+    "category": "infant-child",
+    "subcategory": "Infant Formula",
+    "brand": "EleCare",
+    "description": "EleCare is a hypoallergenic amino acid-based formula for infants and children with severe food allergies and multiple food protein intolerances.",
+    "shortDescription": "Hypoallergenic amino acid-based formula",
+    "images": [
+      "/images/real/elecare_55251_14-1_oz_front_26.jpg",
+      "/images/real/elecare_55251_14-1_oz_front_26.jpg",
+      "/images/real/elecare_55251_14-1_oz_front_26.jpg"
+    ],
+    "variants": [
+      {
+        "id": "2-1",
+        "label": "EleCare Powder",
+        "sku": "55251",
+        "price": 89.99,
+        "originalPrice": 99.99,
+        "size": "Case of 6",
+        "flavor": "Unflavored",
+        "images": [
+          "/images/real/elecare_55251_14-1_oz_front_26.jpg"
+        ],
+        "inStock": true,
+        "stockQuantity": 32
+      }
+    ],
+    "features": [
+      "Amino acid-based formula",
+      "Hypoallergenic",
+      "For severe food allergies",
+      "Complete nutrition",
+      "Easy to digest"
+    ],
+    "specifications": {
+      "Formula Type": "Amino Acid-Based",
+      "Age Range": "0-12 months",
+      "Servings Per Case": "6",
+      "Preparation": "Powder to liquid",
+      "Storage": "Store in a cool, dry place"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 89,
+    "tags": ["hypoallergenic", "amino acid", "infant formula", "allergies"],
+    "isNew": false,
+    "isFeatured": true,
+    "caseSize": "Case of 6",
+    "flavor": "Unflavored",
+    "nutritionalInfo": {
+      "Protein": "3.2g",
+      "Calories": "100",
+      "Fat": "5.3g",
+      "Carbohydrates": "10.3g"
+    }
+  },
+  {
+    "sku": "66680p30",
+    "name": "Juven Powder",
+    "slug": "juven-fruit-punch-1-02-oz-packet-30-pack-66680p30",
+    "price": 34.99,
+    "originalPrice": 39.99,
+    "currency": "USD",
+    "category": "therapeutic-nutrition",
+    "subcategory": "Wound Care",
+    "brand": "Juven",
+    "description": "Juven is a specialized nutritional supplement designed to help support wound healing. Contains arginine and glutamine to help support the body's natural healing process.",
+    "shortDescription": "Specialized nutrition for wound healing support",
+    "images": [
+      "/images/real/juven-fruit-punch-powder-30-pack-product-render.jpg",
+      "/images/real/juven-fruit-punch-powder-30-pack-product-render.jpg",
+      "/images/real/juven-fruit-punch-powder-30-pack-product-render.jpg"
+    ],
+    "variants": [
+      {
+        "id": "3-1",
+        "label": "Fruit Punch",
+        "sku": "66680p30",
+        "price": 34.99,
+        "originalPrice": 39.99,
+        "size": "30-pack",
+        "flavor": "Fruit Punch",
+        "images": [
+          "/images/real/juven-fruit-punch-powder-30-pack-product-render.jpg"
+        ],
+        "inStock": true,
+        "stockQuantity": 28
+      }
+    ],
+    "features": [
+      "Supports wound healing",
+      "Contains arginine and glutamine",
+      "Fruit punch flavor",
+      "Easy to mix",
+      "Clinically studied"
+    ],
+    "specifications": {
+      "Pack Size": "30-pack",
+      "Flavor": "Fruit Punch",
+      "Serving Size": "1 packet",
+      "Servings Per Pack": "30",
+      "Storage": "Store in a cool, dry place"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 156,
+    "tags": ["wound healing", "arginine", "glutamine", "therapeutic"],
+    "isNew": false,
+    "isFeatured": true,
+    "caseSize": "30-pack",
+    "flavor": "Fruit Punch",
+    "nutritionalInfo": {
+      "Calories": "80",
+      "Protein": "0g",
+      "Carbohydrates": "19g",
+      "Sugar": "0g"
+    }
+  },
+  {
+    "sku": "62585",
+    "name": "Nepro with CARBSTEADY Shake",
+    "slug": "nepro-with-carbsteady-vanilla-8-fl-oz-bottle-case-of-24-62585",
+    "price": 67.99,
+    "originalPrice": 74.99,
+    "currency": "USD",
+    "category": "therapeutic-nutrition",
+    "subcategory": "Renal-Kidney Disease Management",
+    "brand": "Nepro",
+    "description": "Nepro is a therapeutic nutrition drink designed specifically for people with kidney disease. Contains CARBSTEADY to help manage blood glucose levels.",
+    "shortDescription": "Therapeutic nutrition for kidney disease",
+    "images": [
+      "/images/real/nepro-vanilla-8-fl-oz-front.jpg",
+      "/images/real/nepro-vanilla-8-fl-oz-front.jpg",
+      "/images/real/nepro-vanilla-8-fl-oz-front.jpg"
+    ],
+    "variants": [
+      {
+        "id": "4-1",
+        "label": "Vanilla",
+        "sku": "62585",
+        "price": 67.99,
+        "originalPrice": 74.99,
+        "size": "Case of 24",
+        "flavor": "Vanilla",
+        "images": [
+          "/images/real/nepro-vanilla-8-fl-oz-front.jpg"
+        ],
+        "inStock": true,
+        "stockQuantity": 15
+      }
+    ],
+    "features": [
+      "Designed for kidney disease",
+      "CARBSTEADY technology",
+      "Low in potassium",
+      "Low in phosphorus",
+      "Vanilla flavor"
+    ],
+    "specifications": {
+      "Formula Type": "Renal-Specific",
+      "Flavor": "Vanilla",
+      "Servings Per Case": "24",
+      "Serving Size": "8 fl oz",
+      "Storage": "Refrigerate after opening"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 203,
+    "tags": ["kidney disease", "renal", "CARBSTEADY", "therapeutic"],
+    "isNew": false,
+    "isFeatured": true,
+    "caseSize": "Case of 24",
+    "flavor": "Vanilla",
+    "nutritionalInfo": {
+      "Calories": "425",
+      "Protein": "19g",
+      "Fat": "22g",
+      "Carbohydrates": "43g",
+      "Potassium": "470mg",
+      "Phosphorus": "250mg"
+    }
+  }
+] 

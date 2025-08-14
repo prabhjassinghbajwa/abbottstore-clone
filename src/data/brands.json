@@ -1,0 +1,92 @@
+[
+  {
+    "id": "binaxnow",
+    "name": "BinaxNOW",
+    "slug": "binaxnow",
+    "description": "Home diagnostic tests for COVID-19 and flu",
+    "logo": "/images/real/binaxnow-v1.jpg",
+    "featured": true,
+    "category": "home-diagnostic-tests"
+  },
+  {
+    "id": "elecare",
+    "name": "EleCare",
+    "slug": "elecare",
+    "description": "Hypoallergenic amino acid-based formula",
+    "logo": "/images/real/elecare.png",
+    "featured": true,
+    "category": "infant-child"
+  },
+  {
+    "id": "ensure",
+    "name": "Ensure",
+    "slug": "ensure",
+    "description": "Complete nutrition for adults",
+    "logo": "/images/real/ensure.png",
+    "featured": true,
+    "category": "adult-nutrition"
+  },
+  {
+    "id": "glucerna",
+    "name": "Glucerna",
+    "slug": "glucerna",
+    "description": "Diabetes management nutrition",
+    "logo": "/images/real/glucerna.png",
+    "featured": true,
+    "category": "diabetes-management"
+  },
+  {
+    "id": "freestyle",
+    "name": "FreeStyle",
+    "slug": "freestyle",
+    "description": "Diabetes monitoring systems",
+    "logo": "/images/real/freestyle.jpg",
+    "featured": true,
+    "category": "diabetes-management"
+  },
+  {
+    "id": "juven",
+    "name": "Juven",
+    "slug": "juven",
+    "description": "Wound healing nutrition",
+    "logo": "/images/real/juven.jpg",
+    "featured": true,
+    "category": "therapeutic-nutrition"
+  },
+  {
+    "id": "nepro",
+    "name": "Nepro",
+    "slug": "nepro",
+    "description": "Renal nutrition for kidney disease",
+    "logo": "/images/real/nepro.png",
+    "featured": true,
+    "category": "therapeutic-nutrition"
+  },
+  {
+    "id": "pedialyte",
+    "name": "Pedialyte",
+    "slug": "pedialyte",
+    "description": "Electrolyte solutions for hydration",
+    "logo": "/images/real/pedialyte.png",
+    "featured": true,
+    "category": "infant-child"
+  },
+  {
+    "id": "pediasure",
+    "name": "PediaSure",
+    "slug": "pediasure",
+    "description": "Complete nutrition for children",
+    "logo": "/images/real/pediasure.png",
+    "featured": true,
+    "category": "infant-child"
+  },
+  {
+    "id": "similac",
+    "name": "Similac",
+    "slug": "similac",
+    "description": "Infant formula and nutrition",
+    "logo": "/images/real/similac.png",
+    "featured": true,
+    "category": "infant-child"
+  }
+] 

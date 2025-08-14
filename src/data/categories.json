@@ -1,0 +1,74 @@
+[
+  {
+    "id": "active-lifestyle",
+    "name": "Active Lifestyle",
+    "slug": "active-lifestyle",
+    "description": "Nutritional products for active individuals and athletes",
+    "image": "/images/real/PDL_Group.png",
+    "featured": true,
+    "subcategories": ["Hydration", "Sports Nutrition", "Recovery"]
+  },
+  {
+    "id": "adult-nutrition",
+    "name": "Adult Nutrition",
+    "slug": "adult-nutrition",
+    "description": "Complete nutritional solutions for adults, including protein shakes, meal replacements, and specialized formulas",
+    "image": "/images/real/an-v2.jpg",
+    "featured": true,
+    "subcategories": ["Protein Shakes", "Meal Replacements", "Specialized Formulas"]
+  },
+  {
+    "id": "diabetes-management",
+    "name": "Diabetes Management",
+    "slug": "diabetes-management",
+    "description": "Specialized nutrition products designed to help manage blood glucose levels and support diabetes care",
+    "image": "/images/real/DM.jpg",
+    "featured": true,
+    "subcategories": ["Blood Glucose Monitoring", "Diabetes Nutrition", "Management Tools"]
+  },
+  {
+    "id": "therapeutic-nutrition",
+    "name": "Therapeutic Nutrition",
+    "slug": "therapeutic-nutrition",
+    "description": "Specialized nutrition products for specific medical conditions and therapeutic needs",
+    "image": "/images/real/TN.jpg",
+    "featured": true,
+    "subcategories": ["Renal Nutrition", "Wound Care", "Metabolic Disorders"]
+  },
+  {
+    "id": "infant-child",
+    "name": "Infant & Child",
+    "slug": "infant-child",
+    "description": "Complete nutrition for infants and children, from formula to nutritional supplements for growth and development",
+    "image": "/images/real/inf-v2.jpg",
+    "featured": true,
+    "subcategories": ["Infant Formula", "Children's Nutrition", "Growth Supplements"]
+  },
+  {
+    "id": "metabolics",
+    "name": "Metabolics",
+    "slug": "metabolics",
+    "description": "Specialized nutrition for metabolic disorders and conditions",
+    "image": "/images/real/MET.jpg",
+    "featured": true,
+    "subcategories": ["Metabolic Disorders", "Specialized Formulas", "Medical Nutrition"]
+  },
+  {
+    "id": "home-diagnostic-tests",
+    "name": "Home Diagnostic Tests",
+    "slug": "home-diagnostic-tests",
+    "description": "At-home testing kits for various health conditions",
+    "image": "/images/real/binaxnow-v1.jpg",
+    "featured": false,
+    "subcategories": ["COVID-19 Testing", "Flu Testing", "Health Monitoring"]
+  },
+  {
+    "id": "renal-kidney-disease",
+    "name": "Renal-Kidney Disease Management",
+    "slug": "renal-kidney-disease",
+    "description": "Specialized nutrition for kidney disease management",
+    "image": "/images/real/nepro.png",
+    "featured": false,
+    "subcategories": ["Renal Nutrition", "Kidney Disease", "Dialysis Support"]
+  }
+] 
