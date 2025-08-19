@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, User, ShoppingBag, Menu, X } from 'lucide-react';
+import { Search, User, ShoppingBag, Menu, X, Brain } from 'lucide-react';
 import { useCart } from '@/contexts/cart-context';
 
 export default function Header() {
@@ -72,6 +72,15 @@ export default function Header() {
 
           {/* Right Side Icons */}
           <div className="flex items-center space-x-4">
+            {/* AI Assistant Button */}
+            <Link
+              href="/ai-mode"
+              className="flex items-center space-x-1 text-gray-700 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-2 rounded-md hover:from-purple-600 hover:to-blue-600 transition-all duration-200"
+            >
+              <Brain className="w-5 h-5" />
+              <span className="hidden md:inline text-sm font-medium">AI Assistant</span>
+            </Link>
+
             {/* Search */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -149,6 +158,16 @@ export default function Header() {
               </button>
             </div>
             <nav className="space-y-4">
+              <Link
+                href="/ai-mode"
+                className="block text-gray-700 hover:text-blue-600 font-medium bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <div className="flex items-center space-x-2">
+                  <Brain className="w-5 h-5" />
+                  <span>AI Assistant</span>
+                </div>
+              </Link>
               <Link
                 href="/brands"
                 className="block text-gray-700 hover:text-blue-600 font-medium"
