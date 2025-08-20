@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useAbbottAIClient } from '@/hooks/useAbbottAIClient';
 
 interface AIChatInterfaceProps {
@@ -129,6 +130,32 @@ export default function AIChatInterface({ onProductsFound }: AIChatInterfaceProp
         ),
         pre: ({ children }: any) => (
             <pre className="p-2.5 rounded bg-gray-100 overflow-x-auto text-[13px] mb-2">{children}</pre>
+        ),
+        table: ({ children }: any) => (
+            <div className="overflow-x-auto my-4">
+                <table className="min-w-full border-collapse border border-gray-300 text-sm">
+                    {children}
+                </table>
+            </div>
+        ),
+        thead: ({ children }: any) => (
+            <thead className="bg-gray-50">{children}</thead>
+        ),
+        tbody: ({ children }: any) => (
+            <tbody className="bg-white">{children}</tbody>
+        ),
+        th: ({ children }: any) => (
+            <th className="border border-gray-300 px-4 py-2 text-left font-semibold text-gray-900 bg-gray-50">
+                {children}
+            </th>
+        ),
+        td: ({ children }: any) => (
+            <td className="border border-gray-300 px-4 py-2 text-gray-700">
+                {children}
+            </td>
+        ),
+        tr: ({ children }: any) => (
+            <tr className="hover:bg-gray-50">{children}</tr>
         )
     };
 
@@ -182,7 +209,12 @@ export default function AIChatInterface({ onProductsFound }: AIChatInterfaceProp
                                 )}
                                 {message.role === 'assistant' && (
                                     <div className="text-[15px] text-gray-700 leading-7">
-                                        <ReactMarkdown components={markdownComponents}>{message.content}</ReactMarkdown>
+                                        <ReactMarkdown
+                                            remarkPlugins={[remarkGfm]}
+                                            components={markdownComponents}
+                                        >
+                                            {message.content}
+                                        </ReactMarkdown>
                                     </div>
                                 )}
                             </div>
