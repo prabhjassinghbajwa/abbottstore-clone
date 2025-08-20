@@ -18,7 +18,7 @@ export default function ProductsPage() {
         </p>
       </div>
       
-      <ProductGrid products={products} showFilters />
+      <ProductGrid products={products} />
     </div>
   );
 } 

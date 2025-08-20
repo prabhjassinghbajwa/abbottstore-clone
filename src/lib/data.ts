@@ -123,4 +123,25 @@ export function getProductVariants(productSlug: string): ProductVariant[] {
 export function getProductVariant(productSlug: string, variantId: string): ProductVariant | undefined {
   const product = getProductBySlug(productSlug);
   return product?.variants.find(variant => variant.id === variantId);
+}
+
+// Additional utility functions for compatibility
+export function getProductById(id: string): Product | undefined {
+  return products.find(product => product.sku === id);
+}
+
+export function getAllProducts(): Product[] {
+  return products;
+}
+
+export function getRelatedProducts(currentProductSlug: string, limit: number = 4): Product[] {
+  const currentProduct = getProductBySlug(currentProductSlug);
+  if (!currentProduct) return [];
+  
+  return products
+    .filter(product => 
+      product.sku !== currentProduct.sku && 
+      (product.category === currentProduct.category || product.brand === currentProduct.brand)
+    )
+    .slice(0, limit);
 } 

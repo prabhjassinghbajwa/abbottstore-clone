@@ -50,7 +50,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <h2 className="text-2xl font-bold text-gray-900 mb-8">You Might Also Like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map((relatedProduct) => (
-              <div key={relatedProduct.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <div key={relatedProduct.sku} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
                 {/* Simplified product card for related products */}
                 <div className="aspect-square bg-gray-100 relative">
                   <Image

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { ShoppingCart, Heart, Truck, Shield, RefreshCw } from 'lucide-react';
-import { Product, ProductVariant } from '@/types';
+import { Product, ProductVariant } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Rating } from '@/components/ui/rating';
 import { Badge } from '@/components/ui/badge';
@@ -22,7 +22,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const handleAddToCart = () => {
     // TODO: Implement add to cart functionality
     console.log('Add to cart:', {
-      productId: product.id,
+      productId: product.sku,
       variantId: selectedVariant.id,
       quantity
     });
@@ -127,7 +127,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
                   } ${!variant.inStock ? 'opacity-50 cursor-not-allowed' : ''}`}
                   disabled={!variant.inStock}
                 >
-                  {variant.name}
+                  {variant.label}
                   {!variant.inStock && ' (Out of Stock)'}
                 </button>
               ))}

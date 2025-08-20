@@ -56,7 +56,7 @@ export default function CartPage() {
                           {item.product.name}
                         </h3>
                         <p className="text-sm text-gray-600">
-                          {item.variant?.name || item.product.name}
+                          {item.variant?.label || item.product.name}
                         </p>
                         <p className="text-sm text-gray-500">
                           {item.variant?.size} {item.variant?.flavor && `• ${item.variant.flavor}`}

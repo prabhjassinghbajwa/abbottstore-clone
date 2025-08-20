@@ -23,16 +23,16 @@ export const REAL_IMAGES = {
   nutritionDuringCancer: "/images/real/category-cancer.jpg",
   
   // Brand logos
-  ensure: "/images/real/brand-ensure.png",
-  glucerna: "/images/real/brand-glucerna.png",
-  similac: "/images/real/brand-similac.png",
-  pedialyte: "/images/real/brand-pedialyte.png",
-  pediasure: "/images/real/brand-pediasure.png",
-  nepro: "/images/real/brand-nepro.png",
-  elecare: "/images/real/brand-elecare.png",
-  juven: "/images/real/brand-juven.png",
-  binaxnow: "/images/real/brand-binaxnow.png",
-  freestyle: "/images/real/brand-freestyle.png"
+  brandEnsure: "/images/real/brand-ensure.png",
+  brandGlucerna: "/images/real/brand-glucerna.png",
+  brandSimilac: "/images/real/brand-similac.png",
+  brandPedialyte: "/images/real/brand-pedialyte.png",
+  brandPediasure: "/images/real/brand-pediasure.png",
+  brandNepro: "/images/real/brand-nepro.png",
+  brandElecare: "/images/real/brand-elecare.png",
+  brandJuven: "/images/real/brand-juven.png",
+  brandBinaxnow: "/images/real/brand-binaxnow.png",
+  brandFreestyle: "/images/real/brand-freestyle.png"
 };
 
 // Product image mapping function
@@ -68,16 +68,16 @@ export function getCategoryImage(categoryName: string): string {
 
 // Brand logo mapping function
 export function getBrandLogo(brandName: string): string {
-  if (brandName.includes('Ensure')) return REAL_IMAGES.ensure;
-  if (brandName.includes('Glucerna')) return REAL_IMAGES.glucerna;
-  if (brandName.includes('Similac')) return REAL_IMAGES.similac;
-  if (brandName.includes('Pedialyte')) return REAL_IMAGES.pedialyte;
-  if (brandName.includes('PediaSure')) return REAL_IMAGES.pediasure;
-  if (brandName.includes('Nepro')) return REAL_IMAGES.nepro;
-  if (brandName.includes('EleCare')) return REAL_IMAGES.elecare;
-  if (brandName.includes('Juven')) return REAL_IMAGES.juven;
-  if (brandName.includes('BinaxNOW')) return REAL_IMAGES.binaxnow;
-  if (brandName.includes('FreeStyle')) return REAL_IMAGES.freestyle;
+  if (brandName.includes('Ensure')) return REAL_IMAGES.brandEnsure;
+  if (brandName.includes('Glucerna')) return REAL_IMAGES.brandGlucerna;
+  if (brandName.includes('Similac')) return REAL_IMAGES.brandSimilac;
+  if (brandName.includes('Pedialyte')) return REAL_IMAGES.brandPedialyte;
+  if (brandName.includes('PediaSure')) return REAL_IMAGES.brandPediasure;
+  if (brandName.includes('Nepro')) return REAL_IMAGES.brandNepro;
+  if (brandName.includes('EleCare')) return REAL_IMAGES.brandElecare;
+  if (brandName.includes('Juven')) return REAL_IMAGES.brandJuven;
+  if (brandName.includes('BinaxNOW')) return REAL_IMAGES.brandBinaxnow;
+  if (brandName.includes('FreeStyle')) return REAL_IMAGES.brandFreestyle;
   
-  return REAL_IMAGES.ensure; // fallback
+  return REAL_IMAGES.brandEnsure; // fallback
 } 
