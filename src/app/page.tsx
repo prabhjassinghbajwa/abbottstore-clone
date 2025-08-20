@@ -35,7 +35,7 @@ export default function Home() {
               <p className="text-xl mb-8 leading-relaxed text-gray-100">
                 When it comes to your child's nutritional needs, we have you covered. From newborn infants to kids of all ages, our nutritional products help them grow up happy and healthy.
               </p>
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
+              <Button size="lg" className="bg-white !text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
                 SHOP OUR PRODUCTS
               </Button>
             </div>
