@@ -33,350 +33,25 @@ const extractCustomerEmail = (message: string): string | undefined => {
     return match ? match[0] : undefined;
 };
 
-// Helper function to extract products from AI response
-const extractProductsFromResponse = (response: any): any[] => {
-
-    console.log('🔍 >>>>>>>>>>>Extracting products from response:', response);
-
-    if (!response) return [];
-
-    console.log('🔍 Extracting products from response:', response);
-
-    // Check if response has products array
-    if (Array.isArray(response.products)) {
-        console.log('✅ Found products array with', response.products.length, 'items');
-        return response.products;
-    }
-
-    // Check if response has product recommendations
-    if (response.productRecommendations && Array.isArray(response.productRecommendations)) {
-        console.log('✅ Found productRecommendations array with', response.productRecommendations.length, 'items');
-        return response.productRecommendations;
-    }
-
-    // Check if response has items array
-    if (response.items && Array.isArray(response.items)) {
-        console.log('✅ Found items array with', response.items.length, 'items');
-        return response.items;
-    }
-
-    // Check if response has recommendations array
-    if (response.recommendations && Array.isArray(response.recommendations)) {
-        console.log('✅ Found recommendations array with', response.recommendations.length, 'items');
-        return response.recommendations;
-    }
-
-    // Check if response has suggestions array
-    if (response.suggestions && Array.isArray(response.suggestions)) {
-        console.log('✅ Found suggestions array with', response.suggestions.length, 'items');
-        return response.suggestions;
-    }
-
-    // Try to parse products from message content if it's a string
-    if (typeof response.message === 'string') {
-        try {
-            // Look for JSON-like structures in the message
-            const jsonMatch = response.message.match(/\{[\s\S]*\}/);
-            if (jsonMatch) {
-                const parsed = JSON.parse(jsonMatch[0]);
-                console.log('🔍 Parsed JSON from message:', parsed);
-                if (parsed.products && Array.isArray(parsed.products)) {
-                    console.log('✅ Found products in parsed JSON with', parsed.products.length, 'items');
-                    return parsed.products;
-                }
-            }
-        } catch (e) {
-            console.log('⚠️ Failed to parse JSON from message:', e);
-        }
-    }
-
-    // Check if the response itself is an array (might be products)
-    if (Array.isArray(response)) {
-        console.log('✅ Response is an array with', response.length, 'items');
-        // Check if it looks like products
-        if (response.length > 0 && response[0] && typeof response[0] === 'object') {
-            const firstItem = response[0];
-            if (firstItem.name || firstItem.title || firstItem.id) {
-                console.log('✅ Array appears to contain products');
-                return response;
-            }
-        }
-    }
-
-    // NEW: Parse MCP server response format
-    if (response.content && Array.isArray(response.content)) {
-        console.log('🔍 Found content array, checking for product data...');
-        console.log('🔍 Content array length:', response.content.length);
-
-        for (const contentItem of response.content) {
-            console.log('🔍 Processing content item:', contentItem);
-            if (contentItem.type === 'text' && contentItem.text) {
-                console.log('🔍 Processing text content:', contentItem.text.substring(0, 200) + '...');
-
-                // Try to extract products from the text content
-                const extractedProducts = parseProductsFromText(contentItem.text);
-                if (extractedProducts.length > 0) {
-                    console.log('✅ Extracted products from text content:', extractedProducts.length);
-                    return extractedProducts;
-                }
-            }
-        }
-    }
-
-    // NEW: Check if response has a message field that contains the text
-    if (response.message && typeof response.message === 'string') {
-        console.log('🔍 Found message field, checking for products...');
-        console.log('🔍 Message content:', response.message.substring(0, 200) + '...');
-
-        const extractedProducts = parseProductsFromText(response.message);
-        if (extractedProducts.length > 0) {
-            console.log('✅ Extracted products from message field:', extractedProducts.length);
-            return extractedProducts;
-        }
-    }
-
-    console.log('❌ No products found in response');
-    return [];
-};
-
-// Helper: Build compact markdown summary to include product matches in chat
-const buildProductsMarkdown = (products: any[]): string => {
-    if (!products || products.length === 0) return '';
-
-    const lines: string[] = [];
-    lines.push(`### Product Matches (${products.length})\n`);
-    products.slice(0, 8).forEach((p: any, index: number) => {
-        const name = p.name || p.title || `Product ${index + 1}`;
-        const brand = p.brand ? ` • ${String(p.brand).toUpperCase()}` : '';
-        const priceObj = typeof p.price === 'object' && p.price ? p.price : null;
-        const priceVal = typeof p.price === 'number' ? p.price : priceObj?.value;
-        const currency = priceObj?.currency || 'USD';
-        const priceStr = typeof priceVal === 'number' ? ` — ${currency} ${priceVal.toFixed(2)}` : '';
-        lines.push(`- ${name}${priceStr}${brand}`);
-        if (p.description) {
-            lines.push(`  \n  ${String(p.description).slice(0, 160)}\n`);
-        }
-    });
-    lines.push('\nTip: You can refine the list (e.g., price, brand, age group).');
-    return lines.join('\n');
-};
-
-// NEW: Parse products from MCP server text response
-const parseProductsFromText = (text: string): any[] => {
-    const products: any[] = [];
-
-    try {
-        console.log('🔍 Parsing text for products:', text.substring(0, 200) + '...');
-
-        // Pattern 1: Look for "Top Recommendation" section
-        const topRecommendationMatch = text.match(/\*\*Product Name:\*\* ([^\n]+)/);
-        if (topRecommendationMatch) {
-            console.log('🔍 Found top recommendation:', topRecommendationMatch[1]);
-
-            const productName = topRecommendationMatch[1].trim();
-
-            // Extract product code
-            const productCodeMatch = text.match(/\*\*Product Code:\*\* ([^\n]+)/);
-            const productCode = productCodeMatch ? productCodeMatch[1].trim() : 'sim-top-1';
-
-            // Extract description
-            const descriptionMatch = text.match(/\*\*Description:\*\* ([^\n]+)/);
-            const description = descriptionMatch ? descriptionMatch[1].trim() : '';
-
-            // Extract brand
-            const brandMatch = text.match(/\*\*Brand:\*\* ([^\n]+)/);
-            const brand = brandMatch ? brandMatch[1].trim() : 'SIMILAC';
-
-            // Extract age group
-            const ageGroupMatch = text.match(/\*\*Age Group:\*\* ([^\n]+)/);
-            const ageGroup = ageGroupMatch ? ageGroupMatch[1].trim() : 'Infant';
-
-            // Extract form
-            const formMatch = text.match(/\*\*Form:\*\* ([^\n]+)/);
-            const form = formMatch ? formMatch[1].trim() : 'Powder';
-
-            // Create product object
-            const product = {
-                id: productCode,
-                name: productName,
-                description: description,
-                price: { value: 29.99, currency: 'USD' }, // Default price
-                category: ageGroup || 'Infant Nutrition',
-                brand: brand,
-                images: [`/images/brand-${brand.toLowerCase()}.svg`],
-                sku: productCode,
-                form: form
-            };
-
-            products.push(product);
-            console.log('✅ Added top recommendation product:', product);
-        }
-
-        // Pattern 2: Look for "Alternative Options" section
-        const alternativeSection = text.match(/### 🔄 \*\*Alternative Options\*\*([\s\S]*?)(?=###|$)/);
-        if (alternativeSection) {
-            console.log('🔍 Found alternative options section');
-
-            const alternativesText = alternativeSection[1];
-            console.log('🔍 Alternatives text:', alternativesText.substring(0, 300) + '...');
-
-            // Look for numbered alternative products (1., 2., 3., etc.)
-            const alternativeMatches = alternativesText.match(/\d+\. \*\*Product Name:\*\* ([^\n]+)/g);
-            if (alternativeMatches) {
-                console.log('🔍 Found alternative products:', alternativeMatches.length);
-
-                alternativeMatches.forEach((match, index) => {
-                    const productName = match.replace(/\d+\. \*\*Product Name:\*\* /, '').trim();
-                    console.log(`🔍 Processing alternative ${index + 1}:`, productName);
-
-                    // Extract corresponding product code - look for the next Product Code after this product name
-                    let productCode = `sim-alt-${index + 1}`;
-                    const productCodeMatches = alternativesText.match(/\*\*Product Code:\*\* ([^\n]+)/g);
-                    if (productCodeMatches && productCodeMatches[index]) {
-                        productCode = productCodeMatches[index].replace(/\*\*Product Code:\*\* /, '').trim();
-                    }
-
-                    // Extract description - look for the next Description after this product name
-                    let description = 'Similac infant formula product';
-                    const descriptionMatches = alternativesText.match(/\*\*Description:\*\* ([^\n]+)/g);
-                    if (descriptionMatches && descriptionMatches[index]) {
-                        description = descriptionMatches[index].replace(/\*\*Description:\*\* /, '').trim();
-                    }
-
-                    // Create product object
-                    const product = {
-                        id: productCode,
-                        name: productName,
-                        description: description,
-                        price: { value: 24.99 + (index * 2), currency: 'USD' }, // Varying prices
-                        category: 'Infant Nutrition',
-                        brand: 'SIMILAC',
-                        images: ['/images/brand-similac.svg'],
-                        sku: productCode
-                    };
-
-                    products.push(product);
-                    console.log('✅ Added alternative product:', product);
-                });
-            } else {
-                console.log('⚠️ No numbered alternative products found, trying different pattern...');
-
-                // Fallback: Look for any Product Name patterns in the alternatives section
-                const fallbackMatches = alternativesText.match(/\*\*Product Name:\*\* ([^\n]+)/g);
-                if (fallbackMatches) {
-                    console.log('🔍 Found fallback alternative products:', fallbackMatches.length);
-
-                    fallbackMatches.forEach((match, index) => {
-                        const productName = match.replace(/\*\*Product Name:\*\* /, '').trim();
-
-                        // Skip if we already have this product
-                        if (products.some(p => p.name === productName)) {
-                            return;
-                        }
-
-                        // Extract corresponding product code
-                        let productCode = `sim-fallback-${index + 1}`;
-                        const productCodeMatch = alternativesText.match(/\*\*Product Code:\*\* ([^\n]+)/);
-                        if (productCodeMatch) {
-                            productCode = productCodeMatch[1].trim();
-                        }
-
-                        // Create product object
-                        const product = {
-                            id: productCode,
-                            name: productName,
-                            description: 'Similac infant formula product',
-                            price: { value: 22.99 + (index * 1.5), currency: 'USD' },
-                            category: 'Infant Nutrition',
-                            brand: 'SIMILAC',
-                            images: ['/images/brand-similac.svg'],
-                            sku: productCode
-                        };
-
-                        products.push(product);
-                        console.log('✅ Added fallback alternative product:', product);
-                    });
-                }
-            }
-        }
-
-        // Pattern 3: Look for any other product mentions in the text
-        const nameRegex = /(\n|^)\s*(?:\d+\.\s*)?(?:[-•]\s*)?\*\*Product Name:\*\*\s*([^\n]+)\s*/g;
-        const nameMatches: { name: string; start: number; end: number }[] = [];
-        let m: RegExpExecArray | null;
-        while ((m = nameRegex.exec(text)) !== null) {
-            nameMatches.push({ name: m[2].trim(), start: m.index, end: nameRegex.lastIndex });
-        }
-        if (nameMatches.length) {
-            console.log('🔍 Found product name blocks:', nameMatches.length);
-            for (let i = 0; i < nameMatches.length; i++) {
-                const blockStart = nameMatches[i].end;
-                const blockEnd = i < nameMatches.length - 1 ? nameMatches[i + 1].start : text.length;
-                const block = text.slice(blockStart, blockEnd);
-                const productName = nameMatches[i].name;
-
-                if (products.some(p => p.name === productName)) continue;
-
-                const codeMatch = block.match(/\*\*Product Code:\*\*\s*([^\n]+)/);
-                const descMatch = block.match(/\*\*Description:\*\*\s*([^\n]+)/);
-                const brandMatch = block.match(/\*\*Brand:\*\*\s*([^\n]+)/);
-
-                const code = codeMatch ? codeMatch[1].trim() : `auto-${i + 1}`;
-                const brand = brandMatch ? brandMatch[1].trim().toUpperCase() : 'SIMILAC';
-                const description = descMatch ? descMatch[1].trim() : 'Abbott product';
-
-                const product = {
-                    id: code,
-                    name: productName,
-                    description,
-                    price: { value: 19.99 + i, currency: 'USD' },
-                    category: 'Infant Nutrition',
-                    brand,
-                    images: [`/images/brand-${brand.toLowerCase()}.svg`],
-                    sku: code
-                };
-                products.push(product);
-                console.log('✅ Added parsed product from generic matcher:', product);
-            }
-        }
-
-        // Pattern 4: Look for any other structured product information
-        const structuredProductMatches = text.match(/(?:Product|Item|Option)\s*\d*[:\-]\s*([^\n]+)/gi);
-        if (structuredProductMatches && structuredProductMatches.length > 0) {
-            console.log('🔍 Found structured product matches:', structuredProductMatches.length);
-
-            structuredProductMatches.forEach((match, index) => {
-                const productName = match.replace(/(?:Product|Item|Option)\s*\d*[:\-]\s*/i, '').trim();
-
-                // Skip if we already have this product or if it's too short
-                if (products.some(p => p.name === productName) || productName.length < 10) {
-                    return;
-                }
-
-                // Create product object
-                const product = {
-                    id: `sim-structured-${index + 1}`,
-                    name: productName,
-                    description: 'Similac product from structured text',
-                    price: { value: 18.99 + (index * 0.5), currency: 'USD' },
-                    category: 'Infant Nutrition',
-                    brand: 'SIMILAC',
-                    images: ['/images/brand-similac.svg'],
-                    sku: `sim-structured-${index + 1}`
-                };
-
-                products.push(product);
-                console.log('✅ Added structured product:', product);
-            });
-        }
-
-        console.log('✅ Total products parsed from text:', products.length);
-        return products;
-
-    } catch (error) {
-        console.error('❌ Error parsing products from text:', error);
+const extractProductsForListing = (response: any): any[] => {
+    if (!response.toolCalls || !response.toolCalls[0] || !response.toolCalls[0].result || !response.toolCalls[0].result.content || !response.toolCalls[0].result.content[0] || !response.toolCalls[0].result.content[0].products) {
         return [];
     }
+
+    const products = response.toolCalls[0].result.content[0].products;
+    const allProducts: any[] = [];
+
+    // Add top pick if it exists
+    if (products.topPick) {
+        allProducts.push(products.topPick);
+    }
+
+    // Add recommendations if they exist
+    if (products.recommendations && Array.isArray(products.recommendations)) {
+        allProducts.push(...products.recommendations);
+    }
+
+    return allProducts;
 };
 
 const getServerUrl = () => {
@@ -602,7 +277,7 @@ export const useAbbottAIClient = (serverUrl = getServerUrl()) => {
             }
 
             // Extract products from the response
-            const products = extractProductsFromResponse(aiResponse);
+            const products = extractProductsForListing(aiResponse);
 
             console.log('🔍 Products extracted:', products);
             console.log('🔍 Products length:', products?.length);
@@ -769,7 +444,7 @@ export const useAbbottAIClient = (serverUrl = getServerUrl()) => {
             }
 
             // Extract products from the response
-            const products = extractProductsFromResponse(aiResponse);
+            const products = extractProductsForListing(aiResponse);
 
             // Show the AI's narrative only; products will render in the right panel
             const simplifiedChatResponse = responseContent.trim();
